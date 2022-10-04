@@ -32,15 +32,16 @@ import urllib.request
 
 print('\n')
 
-#fileName = 'https://wiki.lmera.ericsson.se/wiki/IETF_102_Attendees'	
-fileName = input('Please input the corresponding attendance sheet.html:\n')########################URL for wiki page#############################
+fileName = 'https://wiki.lmera.ericsson.se/wiki/IETF_114_Attendees'	
+#fileName = input('Please input the corresponding attendance sheet.html:\n')########################URL for wiki page#############################
 print('\n')
 
 with urllib.request.urlopen(fileName) as response:
     text = response.read().decode('utf-8')
 
 #get rid of the first part 
-abd,second = text.split('</span></h2>')
+#abd,second = text.split('</span></h2>')
+abd,second = text.split('<h2><span')
 
 content,abd = second.split('<div class="printfooter">')
 #content,abd = second.split('</li></ul>\n')
@@ -114,8 +115,8 @@ for j in range(0, len(initials)):
 		
  
 #=====from getWg&Bof=======#
-#link = 'https://datatracker.ietf.org/meeting/102/agenda.txt'
-link =  input('Please input the agenda .txt link name: ')    ########################URL for agenda page#############################
+link = 'https://datatracker.ietf.org/meeting/114/agenda.txt'
+#link =  input('Please input the agenda .txt link name: ')    ########################URL for agenda page#############################
 
 with urllib.request.urlopen(link) as response:
     ffile = response.read().decode('utf-8')
